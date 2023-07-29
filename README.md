@@ -58,15 +58,21 @@ The following fields should be edited in order for the Makefile to work properly
 - `SOURCE_DIRS`
   - Directories containg source files
   - Default: `./src`
+- `SOURCE_FILE_EXT`
+  - The file extension used by source files
+  - Default: `.cpp`
 - `SUBMODULE_DIR`
   - Directory containing optional Git submodules
   - Default: `./submodules`
 - `INCLUDE_DIRS`
   - Directories containing header files
   - Default: `./include $(wildcard $(SUBMODULE_DIR)/*/include)`
+- `HEADER_FILE_EXT`
+  - The file extension used by header files
+  - Default: `.hpp`
 - `LIBRARIES`
-  - TODO
-  - Default: TODO
+  - pkg-config libraries used by the project
+  - Default: empty
 - `SUBMODULE_OBJECTS`
   - Paths of Git submodule static libraries to be compiled into the main executable
   - Default: `$(wildcard $(SUBMODULE_DIR)/*/build/*.a)`
