@@ -26,7 +26,7 @@ Both makefiles support the following targets.
   - Remove build files
 
 ### Git submodules
-TODO
+Both Makefiles support the use of Git submodules in your project. For now, submodules must be added, updated, and compiled manually (this will hopefully be automated soon). Once compiled, header files and static libraries found in submodules will be automatically included in the main project.
 
 ### Settings
 The following fields should be edited in order for the Makefile to work properly with your project.
