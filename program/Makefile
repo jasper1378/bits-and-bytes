@@ -16,6 +16,8 @@ LIBRARIES :=
 SUBMODULE_OBJECTS := $(wildcard $(SUBMODULE_DIR)/*/build/*.a)
 INSTALL_PATH := /usr/local
 
+BIN_INSTALL_PATH := $(INSTALL_PATH)/bin
+
 export BUILD_DIR := ./build
 
 SHELL := /bin/bash
@@ -58,11 +60,11 @@ $(BUILD_DIR)/%.cpp.o: %.cpp
 
 .PHONY: install
 install:
-	@install -v -Dm755 $(BUILD_DIR)/$(BIN_NAME) -t $(INSTALL_PATH)/
+	@install -v -Dm755 $(BUILD_DIR)/$(BIN_NAME) -t $(BIN_INSTALL_PATH)/
 
 .PHONY: uninstall
 uninstall:
-	@rm -v $(INSTALL_PATH)/$(BIN_NAME)
+	@rm -v $(BIN_INSTALL_PATH)/$(BIN_NAME)
 
 .PHONY: clean
 clean:
