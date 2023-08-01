@@ -71,7 +71,7 @@ The following fields should be edited in order for the Makefile to work properly
   - The file extension used by header files
   - Default: `.hpp`
 - `LIBRARIES`
-  - pkg-config libraries used by the project
+  - Libraries to search when linking
   - Default: empty
 - `SUBMODULE_OBJECTS`
   - Paths of Git submodule static libraries to be compiled into the main executable
