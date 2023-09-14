@@ -34,6 +34,12 @@ The following fields should be edited in order for the Makefile to work properly
 - `BIN_NAME`/`LIB_NAME`
   - The name of the compiled executable/library
   - Default: none
+- `VERSION_MAJOR`
+  - The major version number
+  - Default: `0`
+- `VERSION_MINOR`
+  - The minor version number
+  - Default: `0`
 - `CXX`
   - The C++ compiler to use
   - Default: `g++`
@@ -66,16 +72,13 @@ The following fields should be edited in order for the Makefile to work properly
   - Default: `./submodules`
 - `INCLUDE_DIRS`
   - Directories containing header files
-  - Default: `./include $(wildcard $(SUBMODULE_DIR)/*/include)`
+  - Default: `./include
 - `HEADER_FILE_EXT`
   - The file extension used by header files
   - Default: `.hpp`
 - `LIBRARIES`
   - Libraries to search when linking
   - Default: empty
-- `SUBMODULE_OBJECTS`
-  - Paths of Git submodule static libraries to be compiled into the main executable
-  - Default: `$(wildcard $(SUBMODULE_DIR)/*/build/*.a)`
 - `INSTALL_PATH`
   - Location of installed files; `/bin`, `/lib`, `/include` will be suffixed automatically
   - Default: `/usr/local`
