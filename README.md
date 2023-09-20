@@ -1,16 +1,16 @@
 # generic-makefile
 
 ## About
-This repository contains a pair of simple, generic, C++-focused Makefiles that I use in many of my projects.
+This repository contains a couple of simple, generic, C/C++-focused Makefiles that I use in many of my projects.
 
 ## Installation
-To use, simply copy the desired Makefile into your project's root directory. Please note that GNU Make is recommended.
+To use, simply copy the desired Makefile into your project's root directory. Please note that these Makefiles have only been tested with GNU Make.
 
 ## Usage
-The repository contains two Makefiles, one for libraries (will create both static and shared libraries) and one for regular programs (will create a single binary).
+The repository contains C++ and C Makefiles for libraries (will create both static and shared libraries) and for regular programs (will create a single binary). Please note that GNU Make is unable to deal with spaces in file paths.
 
 ### Targets
-Both makefiles support the following targets.
+All Makefiles support the following targets.
 
 - default
   - Equivalent to `release`
@@ -26,13 +26,16 @@ Both makefiles support the following targets.
   - Remove build files
 
 ### Git submodules
-Both Makefiles support the use of Git submodules in your project. For now, submodules must be added, updated, and compiled manually (this will hopefully be automated soon). Once compiled, header files and static libraries found in submodules will be automatically included in the main project.
+All Makefiles support the use of Git submodules in your project. For now, submodules must be added, updated, and compiled manually (this will hopefully be automated soon). Once compiled, header files and static libraries found in submodules will be automatically included in the main project.
 
 ### Settings
 The following fields should be edited in order for the Makefile to work properly with your project.
 
-- `BIN_NAME`/`LIB_NAME`
-  - The name of the compiled executable/library
+- `BIN_NAME` (if using program Makefile)
+  - The name of the compiled executable
+  - Default: none
+- `LIB_NAME` (if using library Makefile)
+  - The name of the compiled library
   - Default: none
 - `VERSION_MAJOR`
   - The major version number
@@ -40,42 +43,57 @@ The following fields should be edited in order for the Makefile to work properly
 - `VERSION_MINOR`
   - The minor version number
   - Default: `0`
-- `CXX`
+- `CXX` (if using C++ Makefile)
   - The C++ compiler to use
   - Default: `g++`
-- `COMPILE_FLAGS`
+- `CC` (if using C Makefile)
+  - The C compiler to use
+  - Default: `gcc`
+- `COMPILE_FLAGS` (if using C++ Makefile)
   - Flags that are passed to the compiler
   - Default: `-std=c++20 -Wall -Wextra -g`
+- `COMPILE_FLAGS` (if using C Makefile)
+  - Flags that are passed to the compiler
+  - Default: `-std=c17 -Wall -Wextra -g`
 - `RELEASE_COMPILE_FLAGS`
   - Flags that are passed to the compiler; only when making the `release` target
   - Default: `-O2 -DNDEBUG`
 - `DEBUG_COMPILE_FLAGS`
   - Flags that are passed to the compiler; only when making the `debug` target
   - Default: `-Og -DDEBUG`
-- `LINK_FLAGS`
+- `LINK_FLAGS` (if using program Makefile)
   - Flags that are passed to the linker
-  - Default: empty (program Makefile), `-shared` (library Makefile)
+  - Default: empty
+- `LINK_FLAGS` (if using library Makefile)
+  - Flags that are passed to the linker
+  - Default: `-shared` (library Makefile)
 - `RELEASE_LINK_FLAGS`
   - Flags that are passed to the linker; only when making the `release` target
   - Default: empty
 - `DEBUG_LINK_FLAGS`
   - Flags that are passed to the linker; only when making the `debug` target
   - Default: empty
+- `SOURCE_FILE_EXT` (if using C++ Makefile)
+  - The file extension used by source files
+  - Default: `.cpp`
+- `SOURCE_FILE_EXT` (if using C Makefile)
+  - The file extension used by source files
+  - Default: `.c`
+- `HEADER_FILE_EXT` (if using C++ Makefile)
+  - The file extension used by header files
+  - Default: `.hpp`
+- `HEADER_FILE_EXT` (if using C Makefile)
+  - The file extension used by header files
+  - Default: `.h`
 - `SOURCE_DIRS`
   - Directories containg source files
   - Default: `./src`
-- `SOURCE_FILE_EXT`
-  - The file extension used by source files
-  - Default: `.cpp`
-- `SUBMODULE_DIR`
-  - Directory containing optional Git submodules
-  - Default: `./submodules`
 - `INCLUDE_DIRS`
   - Directories containing header files
   - Default: `./include
-- `HEADER_FILE_EXT`
-  - The file extension used by header files
-  - Default: `.hpp`
+- `SUBMODULE_DIR`
+  - Directory containing optional Git submodules
+  - Default: `./submodules`
 - `LIBRARIES`
   - Libraries to search when linking
   - Default: empty
