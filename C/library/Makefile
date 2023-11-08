@@ -2,7 +2,7 @@ LIB_NAME := hello_world
 VERSION_MAJOR := 0
 VERSION_MINOR := 0
 CC := gcc
-COMPILE_FLAGS := -std=c++17 -Wall -Wextra -g
+COMPILE_FLAGS := -std=c17 -Wall -Wextra -g
 RELEASE_COMPILE_FLAGS := -O2 -DNDEBUG
 DEBUG_COMPILE_FLAGS := -Og -DDEBUG
 LINK_FLAGS :=
