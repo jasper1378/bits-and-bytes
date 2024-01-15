@@ -81,7 +81,7 @@ install:
 	@ln -v -s $(LIB_INSTALL_PATH)/$(SHARED_LIB_NAME_SONAME) $(LIB_INSTALL_PATH)/$(SHARED_LIB_NAME_LINKER_NAME)
 	@install -v -Dm644 $(BUILD_DIR)/$(STATIC_LIB_NAME) -t $(LIB_INSTALL_PATH)/
 	@install -v -Dm644 $(foreach INCLUDE_DIR,$(INCLUDE_DIRS),$(wildcard $(INCLUDE_DIR)/*)) -t $(HEADER_INSTALL_PATH)/$(LIB_NAME)
-	@ldconfig -v
+	@ldconfig
 
 .PHONY: uninstall
 uninstall:
