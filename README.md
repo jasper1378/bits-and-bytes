@@ -18,10 +18,18 @@ All Makefiles support the following targets.
   - Compile project using release settings
 - `debug`
   - Compile project using debug settings
+- `install_libraries` (library Makefile)
+  - Copy library files to install location
+- `install_headers` (library Makefile)
+  - Copy header files to install location
 - `install`
-  - Copy executable/library/headers to install location
+  - Copy executable/library and header files to install location
+- `uninstall_libraries` (library Makefile)
+  - Remove installed header files
+- `uninstal_headers` (library Makefile)
+  - Remove installed library files
 - `uninstall`
-  - Remove install files
+  - Remove installed executable/library and header files
 - `clean`
   - Remove build files
 
@@ -31,10 +39,10 @@ All Makefiles support the use of Git submodules in your project. For now, submod
 ### Settings
 The following fields should be edited in order for the Makefile to work properly with your project.
 
-- `BIN_NAME` (if using program Makefile)
+- `BIN_NAME` (program Makefile)
   - The name of the compiled executable
   - Default: none
-- `LIB_NAME` (if using library Makefile)
+- `LIB_NAME` (library Makefile)
   - The name of the compiled library
   - Default: none
 - `VERSION_MAJOR`
@@ -43,16 +51,16 @@ The following fields should be edited in order for the Makefile to work properly
 - `VERSION_MINOR`
   - The minor version number
   - Default: `0`
-- `CXX` (if using C++ Makefile)
+- `CXX` (C++ Makefile)
   - The C++ compiler to use
   - Default: `g++`
-- `CC` (if using C Makefile)
+- `CC` (C Makefile)
   - The C compiler to use
   - Default: `gcc`
-- `COMPILE_FLAGS` (if using C++ Makefile)
+- `COMPILE_FLAGS` (C++ Makefile)
   - Flags that are passed to the compiler
   - Default: `-std=c++20 -Wall -Wextra -g`
-- `COMPILE_FLAGS` (if using C Makefile)
+- `COMPILE_FLAGS` (C Makefile)
   - Flags that are passed to the compiler
   - Default: `-std=c17 -Wall -Wextra -g`
 - `RELEASE_COMPILE_FLAGS`
@@ -61,10 +69,10 @@ The following fields should be edited in order for the Makefile to work properly
 - `DEBUG_COMPILE_FLAGS`
   - Flags that are passed to the compiler; only when making the `debug` target
   - Default: `-Og -DDEBUG`
-- `LINK_FLAGS` (if using program Makefile)
+- `LINK_FLAGS` (program Makefile)
   - Flags that are passed to the linker
   - Default: empty
-- `LINK_FLAGS` (if using library Makefile)
+- `LINK_FLAGS` (library Makefile)
   - Flags that are passed to the linker
   - Default: `-shared` (library Makefile)
 - `RELEASE_LINK_FLAGS`
@@ -73,16 +81,16 @@ The following fields should be edited in order for the Makefile to work properly
 - `DEBUG_LINK_FLAGS`
   - Flags that are passed to the linker; only when making the `debug` target
   - Default: empty
-- `SOURCE_FILE_EXT` (if using C++ Makefile)
+- `SOURCE_FILE_EXT` (C++ Makefile)
   - The file extension used by source files
   - Default: `.cpp`
-- `SOURCE_FILE_EXT` (if using C Makefile)
+- `SOURCE_FILE_EXT` (C Makefile)
   - The file extension used by source files
   - Default: `.c`
-- `HEADER_FILE_EXT` (if using C++ Makefile)
+- `HEADER_FILE_EXT` (C++ Makefile)
   - The file extension used by header files
   - Default: `.hpp`
-- `HEADER_FILE_EXT` (if using C Makefile)
+- `HEADER_FILE_EXT` (C Makefile)
   - The file extension used by header files
   - Default: `.h`
 - `SOURCE_DIRS`
