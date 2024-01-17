@@ -69,12 +69,9 @@ The following fields should be edited in order for the Makefile to work properly
 - `DEBUG_COMPILE_FLAGS`
   - Flags that are passed to the compiler; only when making the `debug` target
   - Default: `-Og -DDEBUG`
-- `LINK_FLAGS` (program Makefile)
+- `LINK_FLAGS`
   - Flags that are passed to the linker
   - Default: empty
-- `LINK_FLAGS` (library Makefile)
-  - Flags that are passed to the linker
-  - Default: `-shared` (library Makefile)
 - `RELEASE_LINK_FLAGS`
   - Flags that are passed to the linker; only when making the `release` target
   - Default: empty
@@ -95,10 +92,10 @@ The following fields should be edited in order for the Makefile to work properly
   - Default: `.h`
 - `SOURCE_DIRS`
   - Directories containg source files
-  - Default: `./src`
+  - Default: `./source`
 - `INCLUDE_DIRS`
   - Directories containing header files
-  - Default: `./include
+  - Default: `./include`
 - `SUBMODULE_DIR`
   - Directory containing optional Git submodules
   - Default: `./submodules`
@@ -106,7 +103,7 @@ The following fields should be edited in order for the Makefile to work properly
   - Libraries to search when linking
   - Default: empty
 - `INSTALL_PATH`
-  - Location of installed files; `/bin`, `/lib`, `/include` will be suffixed automatically
+  - Location of installed files; `/bin`, `/lib`, and `/include` will be suffixed automatically
   - Default: `/usr/local`
 
 ## License
