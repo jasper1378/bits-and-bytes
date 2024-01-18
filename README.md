@@ -33,6 +33,21 @@ All Makefiles support the following targets.
 - `clean`
   - Remove build files
 
+### Project structure
+The default Makefile settings assume that your project has the following directory structure.
+```
+.
+├── include
+├── Makefile
+├── source
+└── submodules
+    └── my_library
+        ├── include
+        ├── include_install
+        ├── Makefile
+        └── source
+```
+
 ### Git submodules
 All Makefiles support the use of Git submodules in your project. For now, submodules must be added, updated, and compiled manually (this will hopefully be automated soon). Once compiled, header files and static libraries found in submodules will be automatically included in the main project.
 
@@ -78,6 +93,9 @@ The following fields should be edited in order for the Makefile to work properly
 - `DEBUG_LINK_FLAGS`
   - Flags that are passed to the linker; only when making the `debug` target
   - Default: empty
+- `LIBRARIES`
+  - Libraries to link against
+  - Default: empty
 - `SOURCE_FILE_EXT` (C++ Makefile)
   - The file extension used by source files
   - Default: `.cpp`
@@ -96,12 +114,12 @@ The following fields should be edited in order for the Makefile to work properly
 - `INCLUDE_DIRS`
   - Directories containing header files
   - Default: `./include`
+- `INCLUDE_INSTALL_DIRS` (library Makefile)
+  - Directories containing header files to be installed
+  - Default: `./install_install`
 - `SUBMODULE_DIR`
   - Directory containing optional Git submodules
   - Default: `./submodules`
-- `LIBRARIES`
-  - Libraries to search when linking
-  - Default: empty
 - `INSTALL_PATH`
   - Location of installed files; `/bin`, `/lib`, and `/include` will be suffixed automatically
   - Default: `/usr/local`
