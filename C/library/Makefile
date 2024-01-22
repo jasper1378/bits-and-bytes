@@ -35,7 +35,6 @@ HEADER_INSTALL_PATH := $(INSTALL_PATH)/include
 COMPILE_FLAGS += -fPIC
 LINK_FLAGS += -shared -Wl,-soname,$(SHARED_LIB_NAME_SONAME)
 
-INCLUDE_DIRS += $(wildcard $(SUBMODULE_DIR)/*/include)
 LINK_FLAGS += $(addprefix -l, $(LIBRARIES))
 SUBMODULE_OBJECTS := $(wildcard $(SUBMODULE_DIR)/*/build/*.a)
 INCLUDE_FLAGS := $(addprefix -I, $(shell find $(INCLUDE_DIRS) -type d))

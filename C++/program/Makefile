@@ -26,7 +26,6 @@ export BUILD_DIR := ./build
 
 BIN_INSTALL_PATH := $(INSTALL_PATH)/bin
 
-INCLUDE_DIRS += $(wildcard $(SUBMODULE_DIR)/*/include)
 LINK_FLAGS += $(addprefix -l, $(LIBRARIES))
 SUBMODULE_OBJECTS := $(wildcard $(SUBMODULE_DIR)/*/build/*.a)
 INCLUDE_FLAGS := $(addprefix -I, $(shell find $(INCLUDE_DIRS) -type d))
