@@ -32,22 +32,27 @@ INCLUDE_FLAGS := $(addprefix -I, $(shell find $(INCLUDE_DIRS) -type d))
 
 export CPPFLAGS := $(INCLUDE_FLAGS) -MMD -MP
 
-release: export CFLAGS := $(CFLAGS) $(COMPILE_FLAGS) $(RELEASE_COMPILE_FLAGS)
-release: export LDFLAGS := $(LDFLAGS) $(LINK_FLAGS) $(RELEASE_LINK_FLAGS)
-debug: export CFLAGS := $(CFLAGS) $(COMPILE_FLAGS) $(DEBUG_COMPILE_FLAGS)
-debug: export LDFLAGS := $(LDFLAGS) $(LINK_FLAGS) $(DEBUG_LINK_FLAGS)
+RELEASE_CFLAGS := $(CFLAGS) $(COMPILE_FLAGS) $(RELEASE_COMPILE_FLAGS)
+RELEASE_LDFLAGS := $(LDFLAGS) $(LINK_FLAGS) $(RELEASE_LINK_FLAGS)
+DEBUG_CFLAGS := $(CFLAGS) $(COMPILE_FLAGS) $(DEBUG_COMPILE_FLAGS)
+DEBUG_LDFLAGS := $(LDFLAGS) $(LINK_FLAGS) $(DEBUG_LINK_FLAGS)
+
+all: CFLAGS := $(RELEASE_CFLAGS)
+all: LDFLAGS := $(RELEASE_LDFLAGS)
+release: CFLAGS := $(RELEASE_CFLAGS)
+release: LDFLAGS := $(RELEASE_LDFLAGS)
+debug: CFLAGS := $(DEBUG_CFLAGS)
+debug: LDFLAGS := $(DEBUG_LDFLAGS)
 
 SOURCES := $(shell find $(SOURCE_DIRS) -type f -name '*$(SOURCE_FILE_EXT)')
 OBJECTS := $(SOURCES:%=$(BUILD_DIR)/%.o)
 DEPENDENCIES := $(OBJECTS:.o=.d)
 
 .PHONY: release
-release:
-	@$(MAKE) all --no-print-directory
+release: _all
 
 .PHONY: debug
-debug:
-	@$(MAKE) all --no-print-directory
+debug: _all
 
 .PHONY: all
 all: _all
