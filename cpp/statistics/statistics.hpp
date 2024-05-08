@@ -1,5 +1,5 @@
-#ifndef BITS_AND_BYTES_STATS_HPP
-#define BITS_AND_BYTES_STATS_HPP
+#ifndef BITS_AND_BYTES_STATISTICS_HPP
+#define BITS_AND_BYTES_STATISTICS_HPP
 
 #include <algorithm>
 #include <cmath>
@@ -8,7 +8,7 @@
 #include <iterator>
 
 namespace bits_and_bytes {
-namespace stats {
+namespace statistics {
 template <typename t_result, typename t_iterator>
   requires std::floating_point<t_result>
 t_result mean(t_iterator first, t_iterator last) {
@@ -52,7 +52,7 @@ template <typename t_result, typename t_iterator>
 t_result stdev(t_iterator first, t_iterator last, bool sample = false) {
   return stdev(first, last, mean(first, last), sample);
 }
-} // namespace stats
+} // namespace statistics
 } // namespace bits_and_bytes
 
 #endif
