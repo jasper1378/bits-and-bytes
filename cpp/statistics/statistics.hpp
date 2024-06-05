@@ -57,72 +57,95 @@ t_num stdev(t_iterator first, t_iterator last, const bool bessel_correction) {
 namespace online {
 // https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Welford's_online_algorithm
 
+namespace min {
 template <typename t_num = double>
   requires(std::floating_point<t_num> || std::integral<t_num>)
-struct min_state {
+struct state {
   std::size_t count;
   t_num min;
 };
 template <typename t_num = double>
   requires(std::floating_point<t_num> || std::integral<t_num>)
-t_num min(const t_num num, min_state<t_num> &state) {
+void update(const t_num num, state<t_num> &state) {
   state.min = (((num < state.min) || (state.count == 0)) ? (num) : (state.min));
   ++state.count;
-  return state.min;
 }
-
 template <typename t_num = double>
   requires(std::floating_point<t_num> || std::integral<t_num>)
-struct max_state {
+t_num result(const state<t_num> &state) {
+  return state.min;
+}
+} // namespace min
+
+namespace max {
+template <typename t_num = double>
+  requires(std::floating_point<t_num> || std::integral<t_num>)
+struct state {
   std::size_t count;
   t_num max;
 };
 template <typename t_num = double>
   requires(std::floating_point<t_num> || std::integral<t_num>)
-t_num max(const t_num num, max_state<t_num> &state) {
+void update(const t_num num, state<t_num> &state) {
   state.max = (((num > state.max) || (state.count == 0)) ? (num) : (state.max));
   ++state.count;
+}
+template <typename t_num = double>
+  requires(std::floating_point<t_num> || std::integral<t_num>)
+t_num result(const state<t_num> &state) {
   return state.max;
 }
+} // namespace max
 
+namespace mean {
 template <typename t_num = double>
   requires std::floating_point<t_num>
-struct mean_state {
+struct state {
   std::size_t count;
   t_num mean;
 };
 template <typename t_num = double>
   requires std::floating_point<t_num>
-t_num mean(const t_num num, mean_state<t_num> &state) {
+void update(const t_num num, state<t_num> &state) {
   state.mean = ((state.count == 0)
                     ? (num)
                     : (state.mean + ((num - state.mean) / (state.count + 1))));
   ++state.count;
-  return state.mean;
 }
-
 template <typename t_num = double>
   requires std::floating_point<t_num>
-struct stdev_state {
+t_num result(const state<t_num> &state) {
+  return state.mean;
+}
+} // namespace mean
+
+namespace stdev {
+template <typename t_num = double>
+  requires std::floating_point<t_num>
+struct state {
   std::size_t count;
-  mean_state<t_num> mean;
+  mean::state<t_num> mean;
   t_num sum_squares_diffs;
 };
 template <typename t_num = double>
   requires std::floating_point<t_num>
-t_num stdev(const t_num num, stdev_state<t_num> &state,
-            const bool bessel_correction) {
+void update(const t_num num, state<t_num> &state) {
   const t_num mean_previous = state.mean.mean;
-  mean(num, state.mean);
+  mean::update(num, state.mean);
   state.sum_squares_diffs =
       ((state.count == 0)
            ? (0)
            : (state.sum_squares_diffs +
               ((num - mean_previous) * (num - state.mean.mean))));
   ++state.count;
+}
+template <typename t_num = double>
+  requires std::floating_point<t_num>
+t_num result(const state<t_num> &state, const bool bessel_correction) {
   return std::sqrt(state.sum_squares_diffs /
                    ((bessel_correction) ? (state.count - 1) : (state.count)));
 }
+} // namespace stdev
 } // namespace online
 } // namespace statistics
 } // namespace bits_and_bytes
