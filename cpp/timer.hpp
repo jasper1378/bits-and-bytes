@@ -5,13 +5,13 @@
 #include <ratio>
 #include <utility>
 
-#include "../type_traits/type_traits.hpp"
+#include "is_specialization_of.hpp"
 
 namespace bits_and_bytes {
 
 template <typename t_duration = std::chrono::duration<double, std::ratio<1>>,
           typename t_clock = std::chrono::steady_clock>
-  requires(bits_and_bytes::type_traits::is_specialization_of_v<
+  requires(bits_and_bytes::is_specialization_of::is_specialization_of_v<
                t_duration, std::chrono::duration>,
            std::chrono::is_clock_v<t_clock>)
 class timer {
