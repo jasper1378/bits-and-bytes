@@ -52,12 +52,9 @@ inline std::string resolve_tilde(const std::string &str) {
       }
 
       getpwnam_r(user.c_str(), &pwd, buf, bufsize, &result);
-      if (result == nullptr) {
-        return "";
-      }
 
-      std::string ret_val{pwd.pw_dir + str.substr(i)};
-
+      std::string ret_val{(result == nullptr) ? ("")
+                                              : (pwd.pw_dir + str.substr(i))};
       std::free(buf);
 
       return ret_val;
