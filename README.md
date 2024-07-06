@@ -2,7 +2,7 @@
 
 ## About
 
-Bits and Bytes is a collection of random and (hopefully) useful code snippets, configurations, scripts, etc.
+Bits and Bytes is a collection of random and (hopefully) useful C and C++ code snippets.
 
 ## License
 
