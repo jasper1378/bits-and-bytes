@@ -13,10 +13,10 @@ AC_PROG_CXX
 # Checks for libraries.
 
 # Checks for header files.
+AC_CHECK_HEADER_STDBOOL
 AC_CHECK_HEADERS([unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
-AC_CHECK_HEADER_STDBOOL
 AC_C_INLINE
 AC_TYPE_SIZE_T
 
