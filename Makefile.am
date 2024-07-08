@@ -1,1 +1,1 @@
-SUBDIRS = include/bits-and-bytes
+SUBDIRS = src
