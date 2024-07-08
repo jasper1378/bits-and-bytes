@@ -2,7 +2,6 @@
 AC_PREREQ([2.72])
 AC_INIT([bits-and-bytes], [0.0])
 AC_CONFIG_SRCDIR([include/bits-and-bytes/enum_flag_operators.hpp])
-AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_HEADERS([config.h])
 AC_LANG([C++])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
