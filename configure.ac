@@ -3,8 +3,9 @@ AC_PREREQ([2.72])
 AC_INIT([bits-and-bytes], [0.0])
 AC_CONFIG_SRCDIR([src/enum_flag_operators.hpp])
 AC_CONFIG_HEADERS([config.h])
-AC_LANG([C++])
+AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign -Wall -Werror])
+AC_LANG([C++])
 
 # Checks for programs.
 AC_PROG_CXX
