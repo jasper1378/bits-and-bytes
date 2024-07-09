@@ -8,6 +8,7 @@ AM_INIT_AUTOMAKE([foreign -Wall -Werror])
 AC_LANG([C++])
 
 # Checks for programs.
+AC_PROG_CC
 AC_PROG_CXX
 
 # Checks for libraries.
