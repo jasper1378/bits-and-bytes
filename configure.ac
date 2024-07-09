@@ -25,5 +25,5 @@ AC_CHECK_FUNCS([pow])
 AC_CHECK_FUNCS([sqrt])
 
 # Output files.
-AC_CONFIG_FILES([Makefile src/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile include/bits-and-bytes/Makefile])
 AC_OUTPUT
