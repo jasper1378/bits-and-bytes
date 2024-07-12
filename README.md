@@ -6,14 +6,14 @@ Bits and Bytes is a collection of random and (hopefully) useful C and C++ code s
 
 ## Installation
 
-All code snippets are packaged as a single header file. Just copy the headers you wish to use into your project directory. Note that some headers depend on each other; a quick peek at the source code reveals for which ones that occurs. Projects using any C++ code snippets should be built with `-std=c++20`.
+All code snippets are packaged as single header files. Just copy the headers you wish to use into your project directory. Note that some headers depend on each other; a quick peek at the source code reveals for which ones that occurs. Projects using any C++ code snippets should probably be built with `-std=c++20`.
 
 If you want to get fancy, add bits-and-bytes as a Git submodule to your project.
 ```
 $ git submodule add https://github.com/jasper1378/bits-and-bytes
 ```
 
-Bits-and-bytes is build using the Autotools; if your project is as well, you can add this as a subproject.
+Bits-and-bytes is built using the Autotools; if your project is as well, you can add this as a subproject.
 ```
 # configure.ac
 ...
@@ -25,7 +25,6 @@ AC_CONFIG_SUBDIRS([bits-and-bytes])
 SUBDIRS += bits-and-bytes
 AM_CPPFLAGS = -I$(top_srcdir)/bits-and-bytes/include
 ```
-Note that all code snippet header are `noinst` to avoid pollution.
 
 ## Usage
 
