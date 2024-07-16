@@ -1,5 +1,5 @@
 AM_CXXFLAGS = -std=c++20
-include_HEADERS =                 \
+pkginclude_HEADERS =              \
 	constexpr_hash_string.hpp \
 	constexpr_min_max.hpp     \
 	enum_flag_operators.hpp   \
