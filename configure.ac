@@ -4,7 +4,7 @@ AC_INIT([bits-and-bytes], [0.0])
 AC_CONFIG_SRCDIR([src/enum_flag_operators.hpp])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE([foreign tar-ustar -Wall -Werror])
+AM_INIT_AUTOMAKE([1.16.5 1.16.5 foreign tar-ustar -Wall -Werror])
 AC_LANG([C++])
 
 # Checks for programs.
