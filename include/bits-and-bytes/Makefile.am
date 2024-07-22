@@ -3,6 +3,7 @@ pkginclude_HEADERS =              \
 	constexpr_hash_string.hpp \
 	constexpr_min_max.hpp     \
 	enum_flag_operators.hpp   \
+	generic_callback.hpp
 	is_same_template.hpp      \
 	is_specialization_of.hpp  \
 	move_elem_to.hpp          \
